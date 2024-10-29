@@ -118,11 +118,9 @@ function App() {
       </div>
 
       {selectedCity && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h4>
-            You Selected {selectedCity}, {selectedState}, {selectedCountry}
-          </h4>
-        </div>
+        <h4>
+          You Selected {selectedCity}, {selectedState}, {selectedCountry}
+        </h4>
       )}
     </div>
   );
