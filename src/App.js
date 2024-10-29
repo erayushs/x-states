@@ -26,31 +26,41 @@ function App() {
   }, [selectedState]);
 
   const fetchCountry = async () => {
-    const data = await fetch(
-      "https://crio-location-selector.onrender.com/countries"
-    );
-    const response = await data.json();
-
-    setCountry(response);
+    try {
+      const data = await fetch(
+        "https://crio-location-selector.onrender.com/countries"
+      );
+      const response = await data.json();
+      setCountry(response);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchStates = async () => {
-    const data = await fetch(
-      `https://crio-location-selector.onrender.com/country=${selectedCountry}/states`
-    );
-    const response = await data.json();
+    try {
+      const data = await fetch(
+        `https://crio-location-selector.onrender.com/country=${selectedCountry}/states`
+      );
+      const response = await data.json();
 
-    setStates(response);
+      setStates(response);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchCities = async () => {
-    const data = await fetch(
-      `https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`
-    );
-    const response = await data.json();
+    try {
+      const data = await fetch(
+        `https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`
+      );
+      const response = await data.json();
 
-    setCities(response);
-    console.log(response);
+      setCities(response);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -108,9 +118,11 @@ function App() {
       </div>
 
       {selectedCity && (
-        <p>
-          You Selected {selectedCity}, {selectedState}, {selectedCountry}
-        </p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <h4>You Selected </h4>
+          <h3> {selectedCity},</h3> <h4> {selectedState},</h4>
+          <h4>{selectedCountry}</h4>
+        </div>
       )}
     </div>
   );
