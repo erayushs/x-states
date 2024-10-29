@@ -119,7 +119,7 @@ function App() {
 
       {selectedCity && (
         <h4>
-          You Selected {selectedCity}, {selectedState}, {selectedCountry}
+          You selected {selectedCity}, {selectedState}, {selectedCountry}
         </h4>
       )}
     </div>
